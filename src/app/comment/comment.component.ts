@@ -27,11 +27,12 @@ export class CommentComponent implements OnInit {
  
  routeData:any=[];
  poster_id:any;
+
   constructor(private _api:ApiService,
-              private _route:ActivatedRoute) { }
+              private _route:ActivatedRoute) {}
 
   ngOnInit(): void {
-    const userdata=localStorage.getItem('user');
+     const userdata=localStorage.getItem('user');
     if(userdata){
       this.mydata=JSON.parse(userdata);
     }
@@ -53,7 +54,7 @@ export class CommentComponent implements OnInit {
         this.action=false;
       }else{
         this.data.push(...data);
-        this.loading=false;
+       this.loading=false;
        this.action=true;
       }
       

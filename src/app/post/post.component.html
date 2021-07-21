@@ -51,7 +51,7 @@
             <button mat-icon-button (click)="like(post.id)"><mat-icon [style.color]="post.liked ? 'red' :'black'">{{post.liked? 'favorite' : 'favorite_border'}}</mat-icon></button>
           </td>
           <td>
-            <a [routerLink]="['/comment',post.id]"  mat-icon-button><mat-icon>chat</mat-icon></a>
+            <a [routerLink]="['/comment',post.id]" [state]="{refresh:false}" mat-icon-button><mat-icon>chat</mat-icon></a>
           </td>
         </tr>
         <tr>

@@ -16,7 +16,7 @@
      <b>{{data.name}}</b>
     <div class="btns">
      <button mat-icon-button ><mat-icon [color]="data.liked && 'warn'" (click)="like(2)">favorite</mat-icon></button>{{data.heart}}
-      <a [routerLink]="['/comment',post_id]"  mat-icon-button><mat-icon>chat</mat-icon></a>{{data.comm}}
+      <a [routerLink]="['/comment',post_id]" [state]="{refresh:false}"  mat-icon-button><mat-icon>chat</mat-icon></a>{{data.comm}}
      <button mat-icon-button   (click)="deletePost(data.post_img)" [style.background]=" deleting && 'white'" [disabled]="deleting"><mat-icon>delete</mat-icon></button>
       
     </div>

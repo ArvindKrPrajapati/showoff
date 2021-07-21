@@ -115,6 +115,7 @@ export class ProfileComponent implements OnInit {
    localStorage.removeItem("postdata");
    localStorage.removeItem("profile");
     localStorage.removeItem("user");
+    localStorage.removeItem('notification');
     this._router.navigate(['/']);
   }
   

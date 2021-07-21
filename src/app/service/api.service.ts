@@ -180,7 +180,7 @@ constructor(private _http:HttpClient) { }
   }
   getComments(start:number,postid:any){
     return this._http.post(this.url+"getComments.php",{postid:postid,start:start});
-    //return of(this.post);
+   // return of(this.post);
   }
   doLike(id:any,myid:string,state:boolean){
     return this._http.post(this.url+"doLike.php",{id:id,myid:myid,state:state});
@@ -194,7 +194,7 @@ constructor(private _http:HttpClient) { }
   }
   notification(myid:any){
     return this._http.post(this.url+"notification.php",{myid:myid});
-    //return of(this.noti);
+   // return of(this.noti);
   }
   
   follow(to:any,from:any,state:boolean){

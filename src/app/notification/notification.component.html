@@ -21,9 +21,8 @@
           </td>
           <td>
             <small>
-              {{notification.name}} {{notification.comment ? 'commented on your post' : (notification.f_from ? 'started following you' : 'loved your post')}}
-             :
-             <small style="color:blue;">{{notification.comment | slice:0:60}}</small> 
+              {{notification.name}} {{notification.comment ? 'commented on your post:' : (notification.f_from ? 'started following you' : 'loved your post  &nbsp; &nbsp; +♥️')}}
+             <small style="color:dodgerblue; display:inline-block; margin:0px;">{{notification.comment | slice:0:60}}</small> 
             </small>
           </td>
         </tr>

@@ -1,0 +1,30 @@
+
+
+
+
+
+
+
+.header{
+  padding: 6px;
+  position: sticky;
+  top:0px;
+  background:white;
+  z-index: 100;
+}
+.header b{
+  letter-spacing: .5px;
+}
+.dp{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.selectBtn{
+  padding: 10px;
+}
+.nodata{
+  text-align: center;
+  font-size: 13px;
+  margin-top: 20px;
+}

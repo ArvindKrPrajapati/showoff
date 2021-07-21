@@ -1,0 +1,48 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="main" (scroll)="handleScroll($event)">
+  <main class="header mat-elevation-z3">
+    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+   <strong style="font-size:17px;">comments</strong> 
+    <a mat-button [routerLink]="['/showoff',id]" style="float:right;">view post</a>
+  </main>
+  <section class="container">
+    <article *ngFor="let comm of data">
+      <a [routerLink]="['/profile',comm.id]" mat-icon-button [state]="{refresh:false}">
+      <img src="api/image/{{comm.image}}"  />
+     </a>
+      <div>
+        <b>{{comm.name}}</b>
+        <p>{{comm.comment}}</p>
+        <mat-divider></mat-divider>
+      </div>
+    </article>
+    <p class="nodata" >{{status}}</p>
+  <div class="loading" *ngIf="loading"></div>
+  </section>
+  <main class="bottom mat-elevation-z4">
+    <table width="100%">
+      <tr>
+        <td>
+          <input type="text" placeholder="write your comment" name="comm" [style.borderBottom]="empty ? '2px solid white' : '2px solid red'" [(ngModel)]="comm"/>
+        </td>
+        <td width="50px">
+          <button mat-icon-button (click)="saveComm()"><mat-icon>send</mat-icon></button>
+        </td>
+      </tr>
+    </table>
+ </main>
+</section>

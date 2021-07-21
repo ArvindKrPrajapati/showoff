@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto,"Helvetica Neue", sans-serif;
+}
+
+ .font{
+   font-family: 'Lobster', cursive;
+ }
+ 
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+.loading {
+  border: 3px solid white;
+  border-radius: 50%;
+  border-top: 3px solid grey;
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  -webkit-animation: spin 1.2s linear infinite; /* Safari */
+  animation: spin 1.2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.selectBtn {
+  background-position: center;
+  transition: background 0.8s;
+}
+.selectBtn:hover {
+  background: #ffffff radial-gradient(circle, transparent 1%,gainsboro 1%) center/15000%;
+}
+/*   #47a7f5*/
+.selectBtn:active {
+  background-color:#eee;
+  background-size: 100%;
+  transition: background 0s;
+}
+ /*end ripple*/
+ 
+

@@ -1,0 +1,37 @@
+
+
+
+
+
+
+.main{
+  padding: 11px;
+  text-align: center;
+  position: sticky;
+  top:0px;
+  z-index:100;
+  background:white;
+}
+b{
+   font-size:24px;
+   letter-spacing: .4px;
+   font-weight: 400;
+}
+.profile-btn{
+  position: fixed;
+  right:10px;
+  top:7px;
+}
+.logo{
+  width:35px;
+  height:35px;
+  position: fixed;
+  left:10px;
+  top:7px;
+}
+.profile-btn img{
+ width:25px; 
+ height:25px;
+ border-radius: 50%;
+ border:1px solid dodgerblue;
+}

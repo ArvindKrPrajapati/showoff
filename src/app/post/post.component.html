@@ -1,0 +1,77 @@
+
+
+
+
+
+<section class="menu" *ngIf="menu" (click)="showMenu()">
+  <main>
+    <button mat-button *ngIf="showDeleteBtn"  (click)="deletePost()">delete</button>
+    <mat-divider *ngIf="showDeleteBtn"></mat-divider>
+    <button mat-button color="warn" (click)="showMenu()">cancel</button>
+  </main>
+</section>
+
+<app-footer></app-footer>
+<section class="main"  (scroll)="handleScroll($event)">
+  <app-header></app-header>
+      <!--<div class="loading" *ngIf="loading"></div>
+   -->
+  <div id="container">
+  <div class="deleteMsg" *ngIf="deleteMsg">{{deleteMsg}}</div>
+    <mat-card class="mat-elevation-z0" *ngFor="let post of posts">
+      <table width="100%">
+        <tr>
+          <td width="30px">
+            <div class="profile-img">
+              <a mat-icon-button [routerLink]="['/profile',post.user_id]" [state]="{refresh:false}">
+                <img src="api/image/{{post.image}}" alt="" />
+              </a>
+            </div>
+          </td>
+          <td>
+            <b class="username">{{post.name}}</b>
+            <p style="margin:0px; font-size:9px;">
+              &nbsp;{{ " "+post.date_time}}
+            </p>
+          </td>
+          <td width="35px">
+            <button (click)="showMenu(post.id,post.user_id,post.post_img)" mat-icon-button style="float:right; clear:both;"><mat-icon>more_vert</mat-icon></button>
+          </td>
+        </tr>
+      </table>
+
+      <div class="post">
+        <mat-icon class="dbl-click-heart" [style.visibility]="(liked && post_id==post.id) ? 'visible' : 'hidden'">favorite</mat-icon>
+        <div class="loading spinner" *ngIf="imgLoad"></div>
+        <img src="api/post/{{post.post_img}}" class="image" [hidden]="imgLoad" (load)="onload()" (dblclick)="like(post.id)" />
+      </div>
+      <table>
+        <tr>
+          <td width="30px">
+            <button mat-icon-button (click)="like(post.id)"><mat-icon [style.color]="post.liked ? 'red' :'black'">{{post.liked? 'favorite' : 'favorite_border'}}</mat-icon></button>
+          </td>
+          <td>
+            <a [routerLink]="['/comment',post.id]"  mat-icon-button><mat-icon>chat</mat-icon></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <b class="heart" *ngIf="post.heart>0">{{post.heart}} people loved this</b>
+            <p class="heart" *ngIf="post.last_comm_name">
+              <strong>{{post.last_comm_name+": "}}</strong>{{post.last_comm}}
+            </p>
+            <p class="heart" *ngIf="post.comm>1">
+              {{post.comm-1}} more comments
+            </p>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+    <br>
+    <div class="nodata">
+      {{status}}
+    </div>
+    <div class="loading" *ngIf="loading"></div>
+    <br><br><br>
+  </div>
+</section>

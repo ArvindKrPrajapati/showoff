@@ -1,0 +1,82 @@
+
+
+
+
+
+
+.bottom{
+  text-align: center;
+  font-size: 13px;
+  width:100%;
+  position: absolute;
+  bottom: 25px;
+}
+.bottom b{
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.middle{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 11px;
+}
+
+.main{
+  height:100%;
+ }
+ 
+ .header{
+   margin:8px;
+   margin-bottom: 30px;
+ }
+ .logo{
+   width:50px;
+   height: 50px;
+ }
+ 
+ .title{
+   font-weight: 400;
+   font-size:24px;
+   letter-spacing: .5px;
+ }
+ 
+ .mobile,.password{
+   width:100%;
+   box-sizing: border-box;
+   padding: 12px 20px 12px 20px;
+   border:1px solid gainsboro;
+   border-radius: 6px;
+   margin-bottom: 15px;
+ }
+ .login{
+   width:100%;
+ }
+ .loginForm{
+   margin-top: 30px;
+   width:80%;
+   margin:auto;
+ }
+ input:focus{
+   outline: none;
+   border:2px solid dodgerblue;
+ }
+ 
+ /*signup*/
+ .bigLine{
+  height: 4px;
+  width:100px;
+  background: tomato;
+  border-radius: 5px;
+  margin-bottom:10px;
+  margin-left: 20px;
+}
+h1{
+  margin:30px 0px 5px 15px;
+  color: dodgerblue;
+}
+.error{
+  font-size: 11px;
+  color:red;
+  margin-bottom: 5px;
+}

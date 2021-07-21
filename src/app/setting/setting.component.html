@@ -1,0 +1,62 @@
+
+
+
+
+
+
+<section class="main">
+  <main class="header mat-elevation-z3">
+    <a [routerLink]="['/profile',mydata.userid]" [state]="{refresh:false}" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+    <b>&nbsp;  settings</b>
+  </main>
+  <main class="content">
+  <table>
+    <tr>
+      <td width="65px">
+        <img src="api/image/{{mydata.image}}" class="dp"/>
+      </td>
+      <td>
+      <p class="font">{{mydata.name}} (you)</p>
+      </td>
+      <td>
+        <button mat-button color="warn" (click)="logout()">logout</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <div style="padding:7px;">
+  <p class="heading">Change Name</p>
+  <input type="text" placeholder="New Name" [(ngModel)]="newName"/>
+  <p class="heading">Change Mobile</p>
+  <input type="number" placeholder="New Mobile" [(ngModel)]="newMobile"/>
+   <p class="error">{{error}}</p>
+   <div style="float:right;">
+    <small *ngIf="updatingDetails"> updating....</small>
+  <button *ngIf="!updatingDetails" mat-button  (click)="changeDetails()" [disabled]="updatingPass || deleting"><mat-icon>done</mat-icon> update name and mobile</button>
+ </div>
+<br><br><br>
+</div>
+<mat-divider></mat-divider>
+<br>
+   <div style="padding:7px;">
+  <p class="heading">Change Password</p>
+  <input type="password" placeholder="old Password" [(ngModel)]="oldP"/>
+  <input type="password" placeholder="New Password" [(ngModel)]="newP"/>
+  <div class="error">{{errorP}}</div>
+  <div class="error" style="color:green;">{{success}}</div>
+ <div style="float:right;">
+   <small *ngIf="updatingPass">updating....</small>
+  <button *ngIf="!updatingPass"  mat-button style="float:right; " (click)="changePassword()" [disabled]="updatingDetails || deleting"><mat-icon>done</mat-icon> update passward</button>
+</div>
+<br><br><br>
+</div>
+<mat-divider></mat-divider>
+<br>
+<div class="delete">
+  <p>we are sorry for the inconvenience caused that you are willing to Delete your Account . Deleting Account will remove your presence from showOff </p>
+<button *ngIf="!deleting" mat-button color="warn" style="width:100%;" (click)="deleteAccount()" [disabled]="updatingDetails || updatingPass">Delete Account</button>
+ <small *ngIf="deleting" ><b>Deleting.....</b></small>
+ </div>
+ </main>
+ <br>
+ </section>

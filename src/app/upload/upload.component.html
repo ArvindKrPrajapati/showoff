@@ -1,0 +1,85 @@
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<app-footer></app-footer>
+-->
+
+<section class="main">
+  <main class="header mat-elevation-z3">
+    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+   <strong style="font-size:17px;">Upload</strong> 
+  </main>
+      <form *ngIf="!imageChangedEvent">
+         <label for="file"><div class="selectBtn mat-elevation-z2"><mat-icon class="addPost">add_photo_alternate</mat-icon><br><p class="uploadImageText">Upload Image</p></div></label>
+          <input type="file"  id="file" name="file" (change)="postUpload($event)" accept=".jpg,.png,.jpeg,.gif" />
+      </form>
+      <div class="imgPre" *ngIf="imageChangedEvent" >
+<image-cropper
+    *ngIf="!uploading"
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    (imageCropped)="imageCropped($event)"
+></image-cropper>
+<img *ngIf="uploading" [src]="croppedImage" width="100%" height="100%"/>
+</div>
+    <div class="uploader" *ngIf="uploading">
+            <mat-progress-bar  [value]="uploadingProgress"></mat-progress-bar>
+  
+         <small> {{uploadingProgress}} %</small>
+        </div>
+      <h2 style="color:green; text-align:center;">{{imgUploaded}}</h2>
+      <div class="btns" *ngIf="imageChangedEvent">
+         <article *ngIf="!uploading">
+            <button mat-raised-button color="primary" class="share" (click)="share()">share</button>
+            <button mat-raised-button class="cancel" (click)="cancel()">cancel</button>
+        </article>
+      </div>
+      <br><br><br>
+   
+</section> 
+
+
+
+
+
+
+<!--
+<app-footer></app-footer>
+
+
+<section class="main">
+  <main class="header mat-elevation-z3">
+    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+   <strong style="font-size:17px;">Upload</strong> 
+  </main>
+      <form *ngIf="!imgsrc">
+         <label for="file"><div class="selectBtn mat-elevation-z0"><mat-icon class="addPost">add_photo_alternate</mat-icon><br><p class="uploadImageText">Upload Image</p></div></label>
+          <input type="file"  id="file" name="file" (change)="postUpload($event)" accept=".jpg,.png,.jpeg" />
+      </form>
+      <div class="imgPre" *ngIf="imgsrc" >
+        <div class="uploader" *ngIf="uploading">
+          {{uploadingProgress}} %
+        </div>
+      <img [src]="imgsrc" width="100%" height="100%"/>
+      </div>
+      <h2 style="color:green; text-align:center;">{{imgUploaded}}</h2>
+      <div class="btns" *ngIf="imgsrc">
+         <article *ngIf="!uploading">
+            <button mat-raised-button color="primary" class="share" (click)="share()">share</button>
+            <button mat-raised-button class="cancel" (click)="cancel()">cancel</button>
+        </article>
+      </div>
+      <br><br><br>
+   
+</section> 
+-->

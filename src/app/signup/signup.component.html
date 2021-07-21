@@ -1,0 +1,33 @@
+
+
+
+
+
+
+
+
+
+
+<section class="main">
+  <div class="header">
+    <h1>Create Account</h1>
+    <div class="bigLine"></div>
+    </div>
+    <form #signupForm="ngForm" (submit)="signup(signupForm.value)">
+      <div class="loginForm">
+      <input type="text" placeholder="Full Name" class="mobile" name="fname" ngModel/>   
+      <br>
+      <input type="number" placeholder="Mobile Number" class="mobile" name="mobile" ngModel/>   
+      <br>
+      <input type="password" placeholder="Password" class="password" name="password" ngModel/>
+      <br>
+      <div class="error">{{error}}</div>
+      <button type="submit" mat-raised-button color="warn" class="login" [disabled]="btnDisable">{{btnName}}</button>
+   </div>
+    </form>
+    <div class="middle" [style.display]="btnDisable ? 'none' : 'block'">or</div>
+    <div class="loginForm">
+    <a routerLink="/" class="login" mat-raised-button [style.display]="btnDisable ? 'none' : 'block'">Login</a>
+    </div>
+ 
+  </section>

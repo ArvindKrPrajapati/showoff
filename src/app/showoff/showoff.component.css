@@ -1,0 +1,49 @@
+
+
+
+
+
+.dbl-click-heart{
+  position: absolute;
+  visibility: hidden;
+  z-index: 100;
+  top:50%;
+  left:50%;
+  color:red;
+  margin-left: -40px;
+  margin-top: -40px;
+  text-shadow: 1px 1px 10px red;
+  font-size: 80px;
+  transition: visibility 1s ease-in-out;
+}
+.main{
+  height:100%;
+  background:rgb(30,30,30);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.postImg{
+ width:100%;
+ 
+}
+.content{
+  position: fixed;
+  bottom:0px;
+  width:100%;
+  color:white;
+  background:rgba(0,0,0,0.4);
+  padding: 10px;
+}
+.btns{
+  float: right;
+  margin-right: 20px;
+}
+.content b{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 15px;
+  letter-spacing: 1px;
+}

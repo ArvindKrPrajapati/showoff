@@ -1,0 +1,37 @@
+
+
+
+
+<app-footer></app-footer>
+<main class="main">
+  <section class="header mat-elevation-z3">
+    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+    <b>&nbsp; Notification</b>
+   </section>
+   
+   <section class="content">
+   <div *ngFor="let notification of data">
+    <div class="selectBtn" (click)="openLink(notification)">
+      <table width="100%" border="0">
+        <tr>
+          <td width="45px">
+           <a mat-icon-button [routerLink]="['/profile',notification.user_id]" [state]="{refresh:false}">
+             <img src="api/image/{{notification.image}}" class="dp" />
+            </a>
+          </td>
+          <td>
+            <small>
+              {{notification.name}} {{notification.comment ? 'commented on your post' : (notification.f_from ? 'started following you' : 'loved your post')}}
+             :
+             <small style="color:blue;">{{notification.comment | slice:0:60}}</small> 
+            </small>
+          </td>
+        </tr>
+      </table>
+    </div>
+     </div>
+   </section>
+      <div class="nodata" *ngIf="!data">no notification</div>
+  <div class="loading" *ngIf="loading"></div>
+   <br><br><br>
+</main>

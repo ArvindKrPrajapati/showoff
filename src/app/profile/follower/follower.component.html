@@ -1,0 +1,32 @@
+
+
+
+
+
+<app-footer></app-footer>
+<section class="main" (scroll)="handleScroll($event)">
+    <main class="header mat-elevation-z3">
+    <a [routerLink]="['/profile',id]" [state]="{refresh:false}" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+    <b>&nbsp; followers</b>
+    </main>
+    <article class="container">
+   <div *ngFor="let follower of data">
+    <table>
+     <tr>
+       <td width="60px">
+         <a mat-icon-button [routerLink]="['/profile',follower.id]" [state]="{refresh:false}">
+           <img src="api/image/{{follower.image}}" class="dp"/>
+         </a>
+       </td>
+       <td>
+         <p>{{follower.name}}</p>
+       </td>
+     </tr>
+     </table>
+     <mat-divider></mat-divider>
+   </div>
+    <p class="nodata" >{{status}}</p>
+   <div class="loading" *ngIf="loading"></div>
+   </article>
+   <br><br><br>
+</section>

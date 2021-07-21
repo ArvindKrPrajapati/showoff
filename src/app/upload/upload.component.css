@@ -1,0 +1,116 @@
+
+
+
+
+
+
+
+
+
+.main{
+  background:rgb(250,250,252);
+  position: relative;
+  height:100%;
+}
+.header{
+  padding: 6px;
+  position: sticky;
+  top:0px;
+  z-index:100;
+  background:white;
+}
+
+.addPost{
+  color:grey;
+  font-size: 100px;
+  margin-left: 33%;
+}
+.imgPre{
+  position: relative;
+  padding:10px;
+  margin:auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+}
+.uploader{
+ padding: 0px 10px 0px 10px;
+}
+.uploadImageText{
+  text-align: center;
+  margin-top: 0px;
+}
+ mat-form-field{
+   width:40%;
+ }
+ 
+ .share{
+   width:40%;
+ }
+ .cancel{
+   width:40%;
+   color:white;
+   background:red;
+   margin-left: 2%;
+ }
+ .btns{
+   width:80%;
+   padding-left: 8%;
+   margin: auto;
+ }
+#file{
+  display: none;
+}
+
+
+ .selectBtn,button{
+   margin-top: 10px;
+   width:40%;
+ }
+ .selectBtn{
+   display: block;
+   margin-top: 20px;
+   padding: 10px;
+   border-radius: 5px;
+   box-sizing: border-box;
+   margin-left: 30%;
+   background:white;
+ }
+ 
+ /*ripple*/
+.selectBtn {
+  background-position: center;
+  transition: background 0.8s;
+}
+.selectBtn:hover {
+  background: #ffffff radial-gradient(circle, transparent 1%,gainsboro 1%) center/15000%;
+}
+/*   #47a7f5*/
+.selectBtn:active {
+  background-color:#eee;
+  background-size: 100%;
+  transition: background 0s;
+}
+ /*end ripple*/
+ 
+
+
+ 
+ @media screen and (max-width:600px){
+   .selectBtn{
+     width: 80%;
+   }
+   mat-form-field{
+     width: 77%;
+   }
+   .error{
+     margin-left: 11%;
+   }
+   .selectBtn{
+     margin-left: 10%;
+   }
+   .selectedFile{
+     width:80%;
+     margin-left: 11%;
+   }
+ }

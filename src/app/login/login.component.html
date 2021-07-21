@@ -1,0 +1,41 @@
+
+
+
+
+
+
+
+
+
+
+<section class="main">
+  <div class="header">
+    <table>
+      <tr>
+        <td>
+          <img src="favicon.ico" class="logo" />
+        </td>
+        <td>
+          <p class="title font">
+            showOff
+          </p>
+        </td>
+      </tr>
+    </table>
+    </div>
+    <form #loginForm="ngForm" (submit)="login(loginForm.value)">
+      <div class="loginForm">
+      <input type="number" placeholder="Mobile Number" class="mobile" name="mobile" ngModel/>   
+      <br>
+      <input type="password" placeholder="Password" class="password" name="password" ngModel/>
+      <br>
+      <div class="error">{{error}}</div>
+      <button type="submit" mat-raised-button color="warn" class="login" [disabled]="btnDisable">{{btnName}}</button>
+   </div>
+    </form>
+    <div class="middle" [style.display]="btnDisable ? 'none' : 'block'">or</div>
+    <div class="loginForm">
+    <a routerLink="signup" class="login" mat-raised-button [style.display]="btnDisable ? 'none' : 'block'">Create Account</a>
+    </div>
+    <div class="bottom">from<br><b>ARVIND PRAJAPATI</b></div>
+  </section>

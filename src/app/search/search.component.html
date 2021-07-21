@@ -1,0 +1,31 @@
+
+
+
+
+<app-footer></app-footer>
+<section class="main">
+  <div class="search-box">
+  <input type="text" name="search" class="search" placeholder="search" [(ngModel)]="search" (keyup)="onSearch()" />
+</div>
+<main class="content">
+  <small *ngIf="!search" class="recent">Recent Searches</small>
+ <div class="searchIcon" *ngIf="!data">
+  <mat-icon >search</mat-icon><br>
+  <small>search users by search box</small>
+ </div>
+  <div class="selectBtn"  (click)="searched(res)" *ngFor="let res of data">
+   <table>
+     <tr>
+       <td width="55px">
+    <img src="api/image/{{res.image}}"/>
+         
+       </td>
+       <td>
+        <b> {{res.name}}</b><br>
+          <small>created on :{{res.date_time}}</small>
+       </td>
+     </tr>
+   </table>
+  </div>
+</main>
+</section>

@@ -1,0 +1,20 @@
+
+
+
+
+.main{
+  position: fixed;
+  width:100%;
+  bottom:0px;
+  background:white;
+  z-index: 100;
+  border-top: 2px solid #eee;
+  padding: 3px 0px 3px 0px;
+}
+mat-icon{
+  font-size: 30px;
+}
+a{
+display: block;
+margin: auto;
+}

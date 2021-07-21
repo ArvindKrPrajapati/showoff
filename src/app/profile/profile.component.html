@@ -1,0 +1,101 @@
+
+
+
+
+
+
+
+<app-footer></app-footer>
+<section class="main" (scroll)="handleScroll($event)">
+  <main class="header mat-elevation-z3">
+    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+    <b>&nbsp; Profile</b>
+    <button mat-icon-button class="menu-btn"  [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="mat-menu" (click)="logout()">
+        logout
+      </button>
+      <a routerLink="/settings" mat-menu-item class="mat-menu">
+        settings
+      </a>
+    </mat-menu>
+  </main>
+  <br>
+  <div class="container">
+  <main class="content" *ngIf="!loading">
+    <button mat-button class="imgbtn" (click)="showEdit()">
+      <img src="{{path+data.image}}" class="image" />
+    </button>
+    <b class="username font">{{data.name}}</b>
+    <div class="followDiv">
+      <table>
+        <tr>
+          <td colspan="3" *ngIf="id!=myid">
+            <button mat-button class="followBtn" (click)="doFollow()" [class.followed]="data.followed" [disabled]="processing">
+              {{data.followed ? "following" : "follow"}}
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a [routerLink]="['/follower',id]" mat-button>
+              {{data.follower}} follower
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['/following',id]" mat-button>
+              {{data.following}} following
+            </a>
+          </td>
+          <td>
+            <button mat-button>
+              {{mypost.length}} post
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  <br>
+    <mat-divider></mat-divider>
+  </main>
+  
+  
+
+  <main class="myposts" *ngIf="mypost">
+    <div *ngFor="let post of mypost">
+      <a mat-button [routerLink]="['/showoff',post.id]" class="postImg">
+      <img src="api/post/{{post.post_img}}" />
+     </a>
+    </div>
+  </main>
+  <div class="loading" *ngIf="loading"></div>
+ </div>
+ <br><br><br>
+    <div *ngIf="status" style="text-align:center;margin-top:10px;"><small>{{status}}</small></div>
+  
+</section>
+
+<section class="change-dp" *ngIf="showEditTab">
+  <mat-card>
+    <div class="post">
+ <img src="{{path+data.image}}" *ngIf="!imageChangedEvent"/>
+<image-cropper
+    *ngIf="startUpload"
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    (imageCropped)="imageCropped($event)"
+></image-cropper>
+ <img [src]="croppedImage" *ngIf="uploading"/>
+    </div>
+    <article *ngIf="!uploading">
+      <button mat-icon-button *ngIf="id==myid"><label for="file"><mat-icon class="edit">edit</mat-icon></label></button>
+      <input type="file" id="file" name="file" accept=".jpg,.png,.jpeg" (change)="imageUp($event)" />
+      <button *ngIf="imageChangedEvent" mat-button color="accent" (click)="saveDp()">save</button>
+      <button (click)="hideEdit()" mat-icon-button color="warn" style="float:right;clear:both;"><mat-icon>close</mat-icon></button>
+    </article>
+    <div *ngIf="uploading" class="uploading">
+      <mat-progress-bar  [value]="uploadingProgress"></mat-progress-bar>
+    </div>
+  </mat-card>
+</section>

@@ -40,7 +40,8 @@ export class SettingComponent implements OnInit {
     this.newMobile=this.mydata.mobile;
   }
   logout():void{
-    localStorage.removeItem("user");
+    localStorage.clear();
+    sessionStorage.clear();
     this._router.navigate(['/']);
   }
   changeDetails(){
@@ -52,7 +53,6 @@ export class SettingComponent implements OnInit {
         if(this.detailsUpdateStatus.status){
           this.mydata.name=this.newName;
           this.mydata.mobile=this.newMobile;
-          localStorage.removeItem('user');
           localStorage.setItem('user',JSON.stringify(this.mydata));
         }else{
           this.openDialog();

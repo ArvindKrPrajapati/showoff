@@ -1,8 +1,3 @@
-
-
-
-
-
 <section class="menu" *ngIf="menu" (click)="showMenu()">
   <main>
     <button mat-button *ngIf="showDeleteBtn"  (click)="deletePost()">delete</button>
@@ -14,10 +9,10 @@
 <app-footer></app-footer>
 <section class="main"  (scroll)="handleScroll($event)">
   <app-header></app-header>
-      <!--<div class="loading" *ngIf="loading"></div>
-   -->
   <div id="container">
-  <div class="deleteMsg" *ngIf="deleteMsg">{{deleteMsg}}</div>
+    <div class="deleteMsg" *ngIf="deleteMsg">
+      {{deleteMsg}}
+    </div>
     <mat-card class="mat-elevation-z0" *ngFor="let post of posts">
       <table width="100%">
         <tr>
@@ -35,23 +30,36 @@
             </p>
           </td>
           <td width="35px">
-            <button (click)="showMenu(post.id,post.user_id,post.post_img)" mat-icon-button style="float:right; clear:both;"><mat-icon>more_vert</mat-icon></button>
+            <button (click)="showMenu(post.id,post.user_id,post.post_img)" mat-icon-button style="float:right; clear:both;">
+              <svg viewBox="-6 -6 36 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+            </button>
           </td>
         </tr>
       </table>
-
       <div class="post">
-        <mat-icon class="dbl-click-heart" [style.visibility]="(liked && post_id==post.id) ? 'visible' : 'hidden'">favorite</mat-icon>
-        <div class="loading spinner" *ngIf="imgLoad"></div>
+        <svg class="dbl-click-heart" x="0px" y="0px"
+          [style.visibility]="(liked && post_id==post.id) ? 'visible' : 'hidden'"
+          width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+          <path fill="white" stroke="none" stroke-width="2" stroke-miterlimit="10" d="M1,21c0,20,31,38,31,38s31-18,31-38
+            c0-8.285-6-16-15-16c-8.285,0-16,5.715-16,14c0-8.285-7.715-14-16-14C7,5,1,12.715,1,21z" />
+        </svg>
         <img src="api/post/{{post.post_img}}" class="image" [hidden]="imgLoad" (load)="onload()" (dblclick)="like(post.id)" />
       </div>
       <table>
         <tr>
           <td width="30px">
-            <button mat-icon-button (click)="like(post.id)"><mat-icon [style.color]="post.liked ? 'red' :'black'">{{post.liked? 'favorite' : 'favorite_border'}}</mat-icon></button>
+            <button mat-icon-button (click)="like(post.id)">
+              <svg x="0px" y="0px"
+                width="24px" height="24px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+                <path [style.fill]="post.liked ? 'red' : 'none'" [style.stroke]="post.liked ? 'none' : 'black'" stroke-width="2" stroke-miterlimit="10" d="M1,21c0,20,31,38,31,38s31-18,31-38
+                  c0-8.285-6-16-15-16c-8.285,0-16,5.715-16,14c0-8.285-7.715-14-16-14C7,5,1,12.715,1,21z" />
+              </svg>
+            </button>
           </td>
           <td>
-            <a [routerLink]="['/comment',post.id]" [state]="{refresh:false}" mat-icon-button><mat-icon>chat</mat-icon></a>
+            <a [routerLink]="['/comment',post.id]" [state]="{refresh:false}" mat-icon-button>
+              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M19,2H5A3,3,0,0,0,2,5V15a3,3,0,0,0,3,3H16.59l3.7,3.71A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V5A3,3,0,0,0,19,2Zm1,16.59-2.29-2.3A1,1,0,0,0,17,16H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z" /></svg>
+            </a>
           </td>
         </tr>
         <tr>

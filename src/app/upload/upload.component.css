@@ -21,9 +21,7 @@
 }
 
 .addPost{
-  color:grey;
-  font-size: 100px;
-  margin-left: 33%;
+  margin-left: calc(50% - 35px);
 }
 .imgPre{
   position: relative;
@@ -38,7 +36,8 @@
 }
 .uploadImageText{
   text-align: center;
-  margin-top: 0px;
+  margin-top: 3px;
+  letter-spacing: 2px;
 }
  mat-form-field{
    width:40%;
@@ -69,11 +68,12 @@
  }
  .selectBtn{
    display: block;
+   margin: auto;
    margin-top: 20px;
-   padding: 10px;
+   width:300px;
    border-radius: 5px;
    box-sizing: border-box;
-   margin-left: 30%;
+   padding: 10px;
    background:white;
  }
  

@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
  id:any;
  data:any=[];
  myid:any;
+ mydata:any;
  ev:any=[];
  uploadingProgress:number=0;
  processing:boolean=false;
@@ -45,14 +46,14 @@ export class ProfileComponent implements OnInit {
               private _api:ApiService,
               private _location:Location) { 
            this.browserRefresh=this._location.getState(); 
-           //alert(this.browserRefresh.refresh)
+          // alert(localStorage.getItem('user'))
          }
 
   ngOnInit(): void {
-    const mydata=localStorage.getItem('user');
-    if(mydata){
-     this.myid=JSON.parse(mydata).userid;
-    } 
+    this.mydata= JSON.parse(localStorage.getItem('user'));
+    if(this.mydata){
+     this.myid=this.mydata.userid;
+    }
     this._activatedRoute.paramMap.subscribe((data)=>{
       this.id=data.get('id');
       if(this.action){
@@ -112,10 +113,8 @@ export class ProfileComponent implements OnInit {
    this.showEditTab=false;
  }
  logout():void{
-   localStorage.removeItem("postdata");
-   localStorage.removeItem("profile");
-    localStorage.removeItem("user");
-    localStorage.removeItem('notification');
+   localStorage.clear();
+   sessionStorage.clear(); 
     this._router.navigate(['/']);
   }
   
@@ -141,7 +140,7 @@ export class ProfileComponent implements OnInit {
     const fd=new FormData();
       fd.append("id",this.myid);
       fd.append("file",file,now+"-"+file.name);
-      this._api.uploadDp(fd).subscribe((event)=>{
+     this._api.uploadDp(fd).subscribe((event)=>{
      this.ev=event;
        if (event.type === HttpEventType.UploadProgress) {
              let progress = Math.round(100 * this.ev.loaded / this.ev.total);
@@ -154,6 +153,8 @@ export class ProfileComponent implements OnInit {
                  this.croppedImage='';
                  this.imageChangedEvent='';
                 this.showEditTab=false;
+                this.mydata.image=now+"-"+file.name;
+                localStorage.setItem('user',JSON.stringify(this.mydata));
                }
             }
          });
@@ -162,14 +163,26 @@ export class ProfileComponent implements OnInit {
  
  doFollow():void{
    this.processing=true;
-   this._api.follow(this.id,this.myid,this.data[0].followed).subscribe((data:any)=>{
-     this.data[0].followed=!this.data[0].followed;
+   let d=JSON.parse(localStorage.getItem('profile'));
+   this._api.follow(this.id,this.myid,this.data.followed).subscribe((data:any)=>{
+     this.data.followed=!this.data.followed;
      this.processing=false;
-     if(this.data[0].followed){
-     this.data[0].follower+=1;
+     if(this.data.followed){
+       this.data.follower+=1;
+       if(d){
+        d[0].following=d[0].following+=1;
+        }
      }else{
-       this.data[0].follower-=1;
+       this.data.follower-=1;
+       if(d){
+        d[0].following=d[0].following-=1;
+        }
      }
+     localStorage.setItem('profile',JSON.stringify(d));
+     let x=[];
+     x[0]=this.data;
+     x[1]=this.mypost;
+     sessionStorage.setItem('pro_'+this.id,JSON.stringify(x));
    });
  }
  

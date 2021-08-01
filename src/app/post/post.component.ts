@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
         this.browserRefresh=this._location.getState(); 
       }
               
-      
+image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUrahX-tVHbgZGYaBbN1W7eQ&usqp=CAU";  
   posts:any=[];
   loading:boolean=false;
   myid:any;

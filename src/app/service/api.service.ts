@@ -8,9 +8,9 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  url:string="/api/";
+   //url:string="/api/";
   
-   //url:string="http://localhost:8000/api/"
+  url:string="http://localhost:8000/api/"
   
 
 

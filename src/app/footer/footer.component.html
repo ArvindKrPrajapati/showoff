@@ -1,27 +1,44 @@
-
-
-
-
-
+<style type="text/css">
+  .st0 {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+</style>
 
 <section class="main mat-elevation-z2">
   <table width="100%">
     <tr>
       <td>
-        <a routerLink="/post" [state]="{refresh:false}" mat-icon-button><mat-icon>home</mat-icon></a>
+        <a routerLink="/post" [state]="{refresh:false}" mat-icon-button>
+          <svg fill="none" stroke="#000000" viewBox="0 0 22 24" width="26px" height="26px">    <path d="M 12 2 A 1 1 0 0 0 11.289062 2.296875 L 1.203125 11.097656 A 0.5 0.5 0 0 0 1 11.5 A 0.5 0.5 0 0 0 1.5 12 L 4 12 L 4 20 C 4 20.552 4.448 21 5 21 L 9 21 C 9.552 21 10 20.552 10 20 L 10 14 L 14 14 L 14 20 C 14 20.552 14.448 21 15 21 L 19 21 C 19.552 21 20 20.552 20 20 L 20 12 L 22.5 12 A 0.5 0.5 0 0 0 23 11.5 A 0.5 0.5 0 0 0 22.796875 11.097656 L 12.716797 2.3027344 A 1 1 0 0 0 12.710938 2.296875 A 1 1 0 0 0 12 2 z" /></svg>
+        </a>
       </td>
       <td>
-        <a routerLink="/search" [state]="{refresh:false}" mat-icon-button><mat-icon>search</mat-icon></a>
+        <a routerLink="/search" [state]="{refresh:false}" mat-icon-button>
+         <svg fill="#000000" viewBox="0 0 24 24" width="26px" height="26px">    <path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 20 22 L 22 20 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z" /></svg>
+       </a>
       </td>
       <td>
-        <a routerLink="/upload" mat-icon-button><mat-icon>add</mat-icon></a>
+        <a routerLink="/upload" mat-icon-button>
+          <svg viewBox="-2 -2 28 28" fill="none" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </a>
       </td>
       <td>
-        <a routerLink="/notification" [state]="{refresh:false}" mat-icon-button><mat-icon>notifications_none</mat-icon></a>
+        <a routerLink="/notification" [state]="{refresh:false}" mat-icon-button>
+           <svg x="0px" y="0px" viewBox="-8 -8 46 46" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+            <path class="st0" d="M27.8,23.2l-1.1-1.7c-1.9-2.8-2.9-6.1-2.9-9.5c0-3.6-2.4-6.5-5.6-7.5C17.9,3.6,17,3,16,3s-1.9,0.6-2.2,1.5
+              c-3.2,1-5.6,3.9-5.6,7.5c0,3.4-1,6.7-2.9,9.5l-1.1,1.7C3.7,24,4.2,25,5.2,25h21.6C27.8,25,28.3,24,27.8,23.2z" />
+            <path class="st0" d="M20,25c0,2.2-1.8,4-4,4s-4-1.8-4-4" />
+          </svg>
+        </a>
       </td>
-     <!-- <td>
-        <a routerLink="" mat-button><mat-icon>chat_bubble_outline</mat-icon></a>
-      </td>-->
+      <!-- <td>
+              <a routerLink="" mat-button><mat-icon>chat_bubble_outline</mat-icon></a>
+            </td>-->
     </tr>
   </table>
 </section>

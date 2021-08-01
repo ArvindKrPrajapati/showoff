@@ -1,16 +1,26 @@
-
-
-
-
-
-
-
 <app-footer></app-footer>
 <section class="main" (scroll)="handleScroll($event)">
   <main class="header mat-elevation-z3">
-    <a routerLink="/post" mat-icon-button><mat-icon>arrow_back_ios_new</mat-icon></a>
+    <a routerLink="/post" mat-icon-button>
+      <svg width="11px" height="20px" viewBox="0 0 11 20">
+        <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Rounded" transform="translate(-548.000000, -3434.000000)">
+            <g id="Navigation" transform="translate(100.000000, 3378.000000)">
+              <g id="-Round-/-Navigation-/-arrow_back_ios" transform="translate(442.000000, 54.000000)">
+                <g>
+                  <polygon id="Path" opacity="0.87" points="0 0 24 0 24 24 0 24"></polygon>
+                  <path d="M16.62,2.99 C16.13,2.5 15.34,2.5 14.85,2.99 L6.54,11.3 C6.15,11.69 6.15,12.32 6.54,12.71 L14.85,21.02 C15.34,21.51 16.13,21.51 16.62,21.02 C17.11,20.53 17.11,19.74 16.62,19.25 L9.38,12 L16.63,4.75 C17.11,4.27 17.11,3.47 16.62,2.99 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </a>
     <b>&nbsp; Profile</b>
-    <button mat-icon-button class="menu-btn"  [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <button mat-icon-button class="menu-btn"  [matMenuTriggerFor]="menu">
+      <svg viewBox="0 -0 24 24" fill="none" height="22" width="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+    </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item class="mat-menu" (click)="logout()">
         logout
@@ -22,77 +32,104 @@
   </main>
   <br>
   <div class="container">
-  <main class="content" *ngIf="!loading">
-    <button mat-button class="imgbtn" (click)="showEdit()">
-      <img src="{{path+data.image}}" class="image" />
-    </button>
-    <b class="username font">{{data.name}}</b>
-    <div class="followDiv">
-      <table>
-        <tr>
-          <td colspan="3" *ngIf="id!=myid">
-            <button mat-button class="followBtn" (click)="doFollow()" [class.followed]="data.followed" [disabled]="processing">
-              {{data.followed ? "following" : "follow"}}
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a [routerLink]="['/follower',id]" mat-button>
-              {{data.follower}} follower
-            </a>
-          </td>
-          <td>
-            <a [routerLink]="['/following',id]" mat-button>
-              {{data.following}} following
-            </a>
-          </td>
-          <td>
-            <button mat-button>
-              {{mypost.length}} post
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div>
-  <br>
-    <mat-divider></mat-divider>
-  </main>
-  
-  
+    <main class="content" *ngIf="!loading">
+      <button mat-button class="imgbtn" (click)="showEdit()">
+        <img src="{{path+data.image}}" class="image" />
+      </button>
+      <b class="username font">{{data.name}}</b>
+      <div class="followDiv">
+        <table>
+          <tr>
+            <td colspan="3" *ngIf="id!=myid">
+              <button mat-button class="followBtn" (click)="doFollow()" [class.followed]="data.followed" [disabled]="processing">
+                {{data.followed ? "following" : "follow"}}
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a [routerLink]="['/follower',id]" mat-button>
+                {{data.follower}} follower
+              </a>
+            </td>
+            <td>
+              <a [routerLink]="['/following',id]" mat-button>
+                {{data.following}} following
+              </a>
+            </td>
+            <td>
+              <button mat-button>
+                {{mypost.length}} post
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <mat-divider></mat-divider>
+    </main>
 
-  <main class="myposts" *ngIf="mypost">
-    <div *ngFor="let post of mypost">
-      <a mat-button [routerLink]="['/showoff',post.id]" class="postImg">
-      <img src="api/post/{{post.post_img}}" />
-     </a>
-    </div>
-  </main>
-  <div class="loading" *ngIf="loading"></div>
- </div>
- <br><br><br>
-    <div *ngIf="status" style="text-align:center;margin-top:10px;"><small>{{status}}</small></div>
-  
+
+
+    <main class="myposts" *ngIf="mypost">
+      <div *ngFor="let post of mypost">
+        <a mat-button [routerLink]="['/showoff',post.id]" class="postImg">
+          <img src="api/post/{{post.post_img}}" />
+        </a>
+      </div>
+    </main>
+    <div class="loading" *ngIf="loading"></div>
+  </div>
+  <br><br><br>
+  <div *ngIf="status" style="text-align:center;margin-top:10px;">
+    <small>{{status}}</small>
+  </div>
 </section>
 
 <section class="change-dp" *ngIf="showEditTab">
   <mat-card>
     <div class="post">
- <img src="{{path+data.image}}" *ngIf="!imageChangedEvent"/>
-<image-cropper
-    *ngIf="startUpload"
-    [imageChangedEvent]="imageChangedEvent"
-    [maintainAspectRatio]="true"
-    [aspectRatio]="4 / 4"
-    (imageCropped)="imageCropped($event)"
-></image-cropper>
- <img [src]="croppedImage" *ngIf="uploading"/>
+      <img src="{{path+data.image}}" *ngIf="!imageChangedEvent" />
+      <image-cropper
+        *ngIf="startUpload"
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 4"
+        (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+      <img [src]="croppedImage" *ngIf="uploading" />
     </div>
     <article *ngIf="!uploading">
-      <button mat-icon-button *ngIf="id==myid"><label for="file"><mat-icon class="edit">edit</mat-icon></label></button>
+      <button mat-icon-button *ngIf="id==myid"><label for="file">
+        <svg width="16px" height="16px" viewBox="0 0 18 18">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(-579.000000, -2771.000000)">
+              <g transform="translate(100.000000, 2626.000000)">
+                <g transform="translate(476.000000, 142.000000)">
+                  <g transform="translate(0.000000, 0.000000)">
+                    <polygon points="0 0 24 0 24 24 0 24"></polygon>
+                    <path d="M3,17.46 L3,20.5 C3,20.78 3.22,21 3.5,21 L6.54,21 C6.67,21 6.8,20.95 6.89,20.85 L17.81,9.94 L14.06,6.19 L3.15,17.1 C3.05,17.2 3,17.32 3,17.46 Z M20.71,7.04 C21.1,6.65 21.1,6.02 20.71,5.63 L18.37,3.29 C17.98,2.9 17.35,2.9 16.96,3.29 L15.13,5.12 L18.88,8.87 L20.71,7.04 Z" id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+
+
+      </label></button>
       <input type="file" id="file" name="file" accept=".jpg,.png,.jpeg" (change)="imageUp($event)" />
       <button *ngIf="imageChangedEvent" mat-button color="accent" (click)="saveDp()">save</button>
-      <button (click)="hideEdit()" mat-icon-button color="warn" style="float:right;clear:both;"><mat-icon>close</mat-icon></button>
+      <button (click)="hideEdit()" mat-icon-button color="warn" style="float:right;clear:both;">
+        <svg width="16px" height="16px" x="0px" y="0px"
+          viewBox="0 0 60.963 60.842" style="enable-background:new 0 0 60.963 60.842;" xml:space="preserve">
+          <path style="fill:red;" d="M59.595,52.861L37.094,30.359L59.473,7.98c1.825-1.826,1.825-4.786,0-6.611
+            c-1.826-1.825-4.785-1.825-6.611,0L30.483,23.748L8.105,1.369c-1.826-1.825-4.785-1.825-6.611,0c-1.826,1.826-1.826,4.786,0,6.611
+            l22.378,22.379L1.369,52.861c-1.826,1.826-1.826,4.785,0,6.611c0.913,0.913,2.109,1.369,3.306,1.369s2.393-0.456,3.306-1.369
+            l22.502-22.502l22.501,22.502c0.913,0.913,2.109,1.369,3.306,1.369s2.393-0.456,3.306-1.369
+            C61.42,57.647,61.42,54.687,59.595,52.861z" />
+        </svg>
+      </button>
     </article>
     <div *ngIf="uploading" class="uploading">
       <mat-progress-bar  [value]="uploadingProgress"></mat-progress-bar>

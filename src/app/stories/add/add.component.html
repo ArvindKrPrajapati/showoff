@@ -1,0 +1,23 @@
+
+
+
+
+<main *ngIf="!imgsrc">
+  <form>
+    <label for="file">
+      <div class="add selectBtn">+ add story</div>
+    </label>
+    <input style="display:none;" type="file" id="file" name="file" (change)="storyUpload($event)" accept=".jpg,.png,.jpeg,.gif" />
+  </form>
+</main>
+
+
+<div class="imgPre" *ngIf="imgsrc" style="background:url({{imgsrc}}) no-repeat; background-size:cover;background-position: center;">
+  <section>
+     <article>
+   <button *ngIf="!uploading" (click)="addStory()"  mat-button>save</button>
+   <button mat-button *ngIf="uploading">{{uploadingProgress}} %</button>
+ </article>
+   <img [src]="imgsrc" />
+ </section>
+ </div>

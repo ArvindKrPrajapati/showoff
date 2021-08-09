@@ -1,0 +1,20 @@
+
+
+
+
+
+
+
+
+<main>
+  <section>
+  <p class="font">Welcome to showOff</p>
+  <div class="profile">
+    <img src="api/image/{{mydata.image}}" />
+    <p>{{mydata.name}}</p>
+    <a [routerLink]="['/profile',mydata.userid]" [state]="{refresh:false}" mat-button color="primary">edit profile</a>
+  </div>
+  <p class="p">follow some people for their posts to showOff</p>
+ <a  routerLink="/explore" class="go" mat-button color="accent">go Follow</a>
+ </section>
+  </main>

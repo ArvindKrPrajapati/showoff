@@ -1,4 +1,16 @@
-<section class="menu" *ngIf="menu" (click)="showMenu()">
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>
+
+
+<section class="menu" *ngIf="menu && !welcome" (click)="showMenu()">
   <main>
     <button mat-button *ngIf="showDeleteBtn"  (click)="deletePost()">delete</button>
     <mat-divider *ngIf="showDeleteBtn"></mat-divider>
@@ -6,15 +18,15 @@
   </main>
 </section>
 
-<app-footer></app-footer>
 <section class="main"  (scroll)="handleScroll($event)">
   <app-header></app-header>
-  <div id="container">
+  <app-story *ngIf="!welcome" [mydata]="mydata"></app-story>
+  <div id="container" *ngIf="!welcome">
     <div class="deleteMsg" *ngIf="deleteMsg">
       {{deleteMsg}}
     </div>
     <mat-card class="mat-elevation-z0" *ngFor="let post of posts">
-      <table width="100%">
+     <table width="100%">
         <tr>
           <td width="30px">
             <div class="profile-img">
@@ -37,15 +49,15 @@
         </tr>
       </table>
       <div class="post">
-        <svg class="dbl-click-heart" x="0px" y="0px"
+       <svg class="dbl-click-heart" x="0px" y="0px"
           [style.visibility]="(liked && post_id==post.id) ? 'visible' : 'hidden'"
           width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
           <path fill="white" stroke="none" stroke-width="2" stroke-miterlimit="10" d="M1,21c0,20,31,38,31,38s31-18,31-38
             c0-8.285-6-16-15-16c-8.285,0-16,5.715-16,14c0-8.285-7.715-14-16-14C7,5,1,12.715,1,21z" />
-        </svg>
-        <img src="api/post/{{post.post_img}}" class="image" [hidden]="imgLoad" (load)="onload()" (dblclick)="like(post.id)" />
-      </div>
-      <table>
+       </svg>
+       <img src="api/post/{{post.post_img}}" class="image" [hidden]="imgLoad" (load)="onload()" (dblclick)="like(post.id)" />
+  </div>
+     <table>
         <tr>
           <td width="30px">
             <button mat-icon-button (click)="like(post.id)">
@@ -82,4 +94,8 @@
     <div class="loading" *ngIf="loading"></div>
     <br><br><br>
   </div>
+ 
+<app-welcome *ngIf="welcome" [mydata]="mydata"></app-welcome>
+
 </section>
+

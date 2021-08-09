@@ -1,0 +1,37 @@
+
+
+
+
+
+
+<div class="left"   (touchend)="next(0)"></div>
+<div class="right"  (touchend)="next(1)"></div>
+ <div class="imgPre" style="background:url({{full+story_img}}) no-repeat; background-size:cover;background-position: center;">
+
+ <div class="counts">
+   <table width="100%">
+    <tr>
+      <td class="count" *ngFor="let counts of [].constructor(story_count); let i=index" [style.background]="i==start ? 'red' : 'white'">
+      </td>
+   </tr>
+   </table>
+ </div>
+
+<article>
+  <table>
+    <tr>
+      <td width="50px">
+        <a [routerLink]="['/profile',id]" [state]="{refresh:false}" mat-icon-button>
+        <img src="/api/image/{{image}}" alt="" />
+       </a>
+      </td>
+      <td>
+        {{name}}
+      </td>
+    </tr>
+  </table>
+</article>
+  <section>
+   <img src="api/story/{{story_img}}" />
+ </section>
+</div>

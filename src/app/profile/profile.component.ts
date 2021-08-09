@@ -153,9 +153,9 @@ export class ProfileComponent implements OnInit {
                  this.croppedImage='';
                  this.imageChangedEvent='';
                 this.showEditTab=false;
-                this.mydata.image=now+"-"+file.name;
+             /*   this.mydata.image=now+"-"+file.name;
                 localStorage.setItem('user',JSON.stringify(this.mydata));
-               }
+               */}
             }
          });
   }

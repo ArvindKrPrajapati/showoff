@@ -1,0 +1,24 @@
+
+
+
+
+
+
+
+
+<main>
+ <table>
+    <tr>
+      <td class="mystory" *ngIf="!mystory.mystory">
+       <img src="api/image/{{mydata.image}}" (click)="go()"/><br>
+       <small>add story</small>
+      </td>
+      <td *ngFor="let story of data">
+       <img class="otherstory" src="api/image/{{story.image}}" (click)="goView(story.id)" [class.lazy]="story.id==viewId && lazy"/>
+       </td>
+    </tr>
+  </table>
+   <svg *ngIf="!mystory.mystory" [class.add-story]="addstory && lazy" viewBox="0 0 24 24" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="add">
+    <line [style.display]="addstory && lazy ? 'none' : 'block'" x1="12" y1="5" x2="12" y2="19"></line>
+   <line x1="5" y1="12" x2="19" y2="12"></line></svg>
+</main>

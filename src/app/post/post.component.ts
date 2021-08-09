@@ -22,7 +22,10 @@ export class PostComponent implements OnInit {
       }
               
 image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUrahX-tVHbgZGYaBbN1W7eQ&usqp=CAU";  
-  posts:any=[];
+ 
+posts:any=[];
+welcome:boolean=false;
+ mydata:any;
   loading:boolean=false;
   myid:any;
   elem:any=[];
@@ -41,12 +44,10 @@ image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUr
    deleteResponse:any=[];
    
   ngOnInit(): void {
-    
-     const userdata=localStorage.getItem('user');
-    if(userdata){
-      this.myid=JSON.parse(userdata).userid;
+     this.mydata=JSON.parse(localStorage.getItem('user'));
+    if(this.mydata){
+      this.myid=this.mydata.userid;
     }
-    //trying to catche
     if(this.action){
      this.loadData(); 
     }
@@ -69,7 +70,11 @@ image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUr
         this.posts=catcheData;
       }
      this._api.getPost(this.start,this.myid).subscribe((data:any)=>{
-      this.nodata=data[0];
+     this.nodata=data[0];
+      if(this.start===0 && this.nodata.status===false)
+       {
+         this.showUsersToFollow();
+       }
       if(this.nodata.status===false){
         this.status="no more data";
         this.loading=false;
@@ -78,12 +83,15 @@ image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUr
         if(this.start===0){
           this.posts=[];
         }
+        
         this.posts.push(...data);
        localStorage.setItem('postdata',JSON.stringify(this.posts));
         this.loading=false;
        this.action=true;
       }
       
+    },(error:any)=>{
+      //  alert("unable to connect to server..")
     });
     }
  }
@@ -150,4 +158,9 @@ image:any="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUr
   localStorage.setItem('postdata',JSON.stringify(this.posts));
   }
   
+  showUsersToFollow():void{
+    this.posts=[];
+    localStorage.removeItem('postdata');
+    this.welcome=true;
+  }
 }

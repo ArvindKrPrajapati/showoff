@@ -10,11 +10,11 @@ import { of } from 'rxjs';
 export class ApiService {
    //url:string="/api/";
   
-  url:string="http://localhost:8000/api/"
+ url:string="http://localhost:8000/api/"
   
 
 
-post:any=[{
+post:any=[{mystory:true},[{
   id:1,
   user_id:1,
   follow_id:1,
@@ -92,7 +92,7 @@ post:any=[{
   post_img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUrahX-tVHbgZGYaBbN1W7eQ&usqp=CAU",  
   image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJI42EURKpMnIUrahX-tVHbgZGYaBbN1W7eQ&usqp=CAU",
   date_time:"5 years ago"
-}
+}]
 ]
 
 noti:any=[
@@ -226,5 +226,15 @@ constructor(private _http:HttpClient) { }
   }
   unfollow(id:number){
     return this._http.post(this.url+"unfollow.php",{id:id});
+  }
+  
+  getPeople(id:any,start:number){
+    return this._http.post(this.url+"people.php",{id:id,start:start});
+   // return of(this.post);
+  }
+  
+  getStory(myid:any,start:number){
+    return this._http.post(this.url+"getStory.php",{myid:myid,start:start});
+    //return of(this.post);
   }
 }

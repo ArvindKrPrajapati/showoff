@@ -29,6 +29,9 @@ import { FollowingComponent } from './profile/following/following.component';
 import { SettingComponent } from './setting/setting.component';
 
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { PeopleComponent } from './people/people.component';
+import { StoryComponent } from './post/story/story.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ShowoffComponent,
     FollowerComponent,
     FollowingComponent,
-    SettingComponent
+    SettingComponent,
+    WelcomeComponent,
+    PeopleComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,

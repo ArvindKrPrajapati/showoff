@@ -1,0 +1,77 @@
+
+
+
+main{
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+  overflow-x: scroll;
+  padding: 10px 10px 0px 5px;
+}
+
+ img{
+   box-sizing: border-box;
+  width:60px;
+  height: 60px;
+  border-radius: 50% 50% 0% 50%;
+  margin-left: 2px;
+}
+
+ .mystory img{
+  border-radius: 50% 50% 50% 0%;
+  }
+ .mystory{
+   padding-left: 4px;
+   background:white;
+  }
+  .otherstory{
+    padding: 2px;
+    background:linear-gradient(30deg,red,gold,green);
+  }
+
+ .add{
+   display: block;
+   margin-top: -20px;
+   margin-left: -3px;
+   width:24px;
+   height:24px;
+ }
+ .lazy{
+   padding: 2px;
+   border:none;
+   animation: lazy .2s infinite alternate ease-in-out;
+ }
+ 
+ @keyframes lazy{
+   0%{
+     background:linear-gradient(red,gold,green);
+   }
+   100%{
+     background:linear-gradient(green,gold,red);
+   }
+ }
+ 
+ .add-story{
+   animation:  addstory .9s infinite alternate ease;
+ }
+ @keyframes addstory{
+   0%{
+     margin-top: -15px;
+     stroke:darkblue;
+     transform: translateX(5px);
+   }
+   25%{
+     stroke: dodgerblue;
+   }
+   50%{
+     stroke: orange;
+   }
+   75%{
+     stroke: dodgerblue;
+   }
+   100%{
+     margin-top: -15px;
+     stroke:navy;
+     transform: translateX(40px);
+     
+   }
+ }

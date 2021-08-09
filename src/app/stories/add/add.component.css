@@ -1,0 +1,52 @@
+
+
+
+
+
+
+main{
+  height:100%;
+  background:#eee;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add{
+  --mycolor:green;
+  padding:10px 20px 10px 20px;      
+  border:1px inset var(--mycolor);
+  border-radius: 4px;
+  color:var(--mycolor);
+}
+.add:hover{
+  box-shadow: 2px 2px 5px green;
+}
+
+.imgPre{
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.imgPre img{
+  max-width:100%;
+  max-height:100%;
+  box-shadow: 1px 1px 10px grey;
+}
+ article{
+   margin:5px;
+  color:white;
+  position: fixed;
+  top:0px;
+  right:0px;
+}
+.imgPre section{
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: border-box;
+  background:rgba(0,0,0,0.7);
+  padding:35px;
+}

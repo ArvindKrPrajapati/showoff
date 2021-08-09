@@ -1,0 +1,14 @@
+1-when i upload dp it dont appear in header i have to logout and login to appear changes
+2-when i search someone and follows/unfollows him and agian go back to search tab and click on searched people his profile didn't appear it keeps loading 
+3-my name also appears in search box which should not and when someone's dp got changed and i search him again and click on him but old search cache doesn't get replaced by old one which should
+4-design bug in showoff pages
+
+5-there is a big bug in story view section 
+
+
+
+
+----legacies-----
+
+-----backend bugs----
+1-explore shows all the people those whom i follows too

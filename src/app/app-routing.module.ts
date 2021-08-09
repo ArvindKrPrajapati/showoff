@@ -19,6 +19,7 @@ import { ShowoffComponent } from './showoff/showoff.component';
 import { FollowerComponent } from './profile/follower/follower.component';
 import { FollowingComponent } from './profile/following/following.component';
 import { SettingComponent } from './setting/setting.component';
+import { PeopleComponent } from './people/people.component';
 
 import { AuthGuard } from './auth-guard.service';
 
@@ -86,7 +87,16 @@ const routes: Routes = [{
   component:SettingComponent,
   canActivate:[AuthGuard],
   data:{animation:'Home'}
-}
+},
+{
+  path:'explore',
+  component:PeopleComponent,
+  canActivate:[AuthGuard]
+},
+  {
+    path: 'story',
+    loadChildren: () => import('./stories/stories.module').then(m => m.StoriesModule)
+  }
 ];
 
 @NgModule({
